@@ -2,7 +2,7 @@ vowels = ["a", "e", "i", "o", "u"]
 
 
 def validator(password):
-    # 모음이 여부 판별
+    # 모음 여부 판별
     if not any(char in vowels for char in password):
         return False
 
