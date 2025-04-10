@@ -3,7 +3,7 @@ using namespace std;
 
 int N, M, arr[10];
 
-void func(int k) {
+void func(int k, int start) {
     if (k == M) {
         for (int i = 0; i < M; i++)
             cout << arr[i] << ' ';
@@ -11,11 +11,9 @@ void func(int k) {
         return;
     }
 
-    int st = 1;
-    if (k != 0) st = arr[k - 1] + 1;
-    for (int i = st; i <= N; i++) {
+    for (int i = start; i <= N; i++) {
         arr[k] = i;
-        func(k + 1);
+        func(k + 1, i + 1);
     }
 }
 
@@ -23,5 +21,5 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin >> N >> M;
-    func(0);
+    func(0, 1);
 }
