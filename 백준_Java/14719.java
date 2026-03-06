@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int h = Integer.parseInt(st.nextToken());
+        int w = Integer.parseInt(st.nextToken());
+        st = new StringTokenizer(br.readLine());
+
+        int[] height = new int[w];
+        for (int i = 0; i < w; i++) {
+            height[i] = Integer.parseInt(st.nextToken());
+        }
+        int answer = 0;
+
+        for (int i = 1; i < w - 1; i++) {
+            int left = 0;
+            int right = 0;
+
+            for (int j = 0; j < i; j++) {
+                left = Math.max(left, height[j]);
+            }
+
+            for (int j = i + 1; j < w; j++) {
+                right = Math.max(right, height[j]);
+            }
+
+            if (height[i] < left && height[i] < right) {
+                answer += Math.min(left, right) - height[i];
+            }
+        }
+        System.out.print(answer);
+    }
+}
